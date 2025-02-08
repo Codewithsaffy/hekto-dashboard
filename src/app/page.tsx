@@ -13,6 +13,8 @@ import {
 } from "chart.js";
 import { client } from "@/sanity/lib/client";
 import { useRouter } from "next/navigation";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 
 // Register Chart.js components
 ChartJS.register(
@@ -241,6 +243,10 @@ const Dashboard: React.FC = () => {
   };
 
   return (
+    <SidebarProvider>
+          <AppSidebar /> 
+          <main>
+          <SidebarTrigger />
     <div className="min-h-screen  text-white p-8">
       <h1 className="text-3xl font-bold mb-6">E-commerce Dashboard</h1>
 
@@ -335,6 +341,8 @@ const Dashboard: React.FC = () => {
         </div>
       )}
     </div>
+    </main>
+    </SidebarProvider>
   );
 };
 
